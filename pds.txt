@@ -1,0 +1,5 @@
+PDS is a Python for Data Science course.
+DBMS is another subject.
+PDS practicals are performed in Python.
+Data Science is an important field.
+PDS helps us learn data analysis.
