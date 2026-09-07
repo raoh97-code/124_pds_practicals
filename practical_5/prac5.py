@@ -5,24 +5,62 @@ marks = pd.Series([85, 78, 92, 67, 88])
 print("Pandas Series:")
 print(marks)
 
+# Column names of Adult Census Income Dataset
+
+columns = [
+    "age",
+    "workclass",
+    "fnlwgt",
+    "education",
+    "education-num",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "capital-gain",
+    "capital-loss",
+    "hours-per-week",
+    "native-country",
+    "income"
+]
+
+# Make .csv file of the dataset
+df = pd.read_csv('adult.data', sep = ",", header = None, names=columns)
+df.to_csv("adult.csv", index=False)
+
+
+# Read the dataset
+data = pd.read_csv(
+    "adult.csv",
+    na_values="?",
+    skipinitialspace=True
+)
+
 # Creating a Pandas DataFrame
-students = {
-    "Enrollment_No": [101, 102, 103, 104, 105],
-    "Name": ["Harsh", "Rahul", "Amit", "Om", "Jay"],
-    "Branch": ["CE", "CE", "IT", "CE", "IT"],
-    "Semester": [5, 5, 5, 5, 5],
-    "SPI": [8.5, 9.2, 8.9, 7.8, 9.0]
-}
-df = pd.DataFrame(students)
+# students = {
+#     "Enrollment_No": [101, 102, 103, 104, 105],
+#     "Name": ["Harsh", "Rahul", "Amit", "Om", "Jay"],
+#     "Branch": ["CE", "CE", "IT", "CE", "IT"],
+#     "Semester": [5, 5, 5, 5, 5],
+#     "SPI": [8.5, 9.2, 8.9, 7.8, 9.0]
+# }
+
+df = pd.read_csv("adult.csv")
 print("\nPandas DataFrame:")
 print(df)
 
 # Writing DataFrame to CSV file
-df.to_csv("students.csv", index=False)
-print("\nDataset saved as students.csv")
+# df.to_csv("students.csv", index=False)
+# print("\nDataset saved as students.csv")
 
 # Reading Dataset
-data = pd.read_csv("students.csv")
+# Read the dataset
+data = pd.read_csv(
+    "adult.csv",
+    na_values="?",
+    skipinitialspace=True
+)
 print("\nDataset:")
 print(data)
 
@@ -43,21 +81,21 @@ print("\nStatistical description:")
 print(data.describe())
 
 # Indexing
-print("\nValue at row 2, column Name:")
-print(data.loc[2, "Name"])
+print("\nValue at row 5, column occupation:")
+print(data.loc[5, "occupation"])
 
 # Selecting a column
-print("\nName column:")
-print(data["Name"])
+print("\nRace column:")
+print(data["race"])
 
 # Selecting multiple columns
-print("\nName and SPI columns:")
-print(data[["Name", "SPI"]])
+print("\nAge and Income columns:")
+print(data[["age", "income"]])
 
 # Selecting rows using iloc
 print("\nFirst three rows:")
 print(data.iloc[:3])
 
 # Selecting students with SPI greater than 8.5
-print("\nStudents with SPI greater than 8.5:")
-print(data[data["SPI"] > 8.5])
+print("\nPeople with native country United States: ")
+print(data[data["native-country"] == "United-States"])
